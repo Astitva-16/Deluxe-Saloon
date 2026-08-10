@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>डिलक्स सैलून</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <main class="app">
+
+    <!-- TOP LEFT: LIVE TIME -->
+    <div class="top-left">
+      <span id="currentTime">Loading...</span>
+    </div>
+
+
+    <!-- TOP CENTER: ONLINE -->
+    <div class="top-center">
+      <span class="online-dot"></span>
+      <span id="onlineCount">36</span>
+      <span class="online-text">online</span>
+    </div>
+
+
+    <!-- TOP RIGHT: MUSIC LINKS -->
+    <div class="top-right">
+
+      <!-- Spotify -->
+      <a
+        class="music-link"
+        href="https://open.spotify.com/playlist/2AVjI8Z57bqMJVtU3V9X1Q"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open Spotify Playlist"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.5 17.3c-.24.36-.66.48-1.02.24-2.8-1.72-6.3-2.1-10.5-1.14-.42.12-.78-.18-.9-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.36.18.48.66.24 1.02zm1.44-3.3c-.3.42-.84.6-1.26.3-3.24-1.98-8.16-2.58-11.94-1.38-.48.12-1.02-.12-1.14-.6-.12-.48.12-1.02.6-1.14 4.32-1.32 9.72-.66 13.5 1.62.42.24.6.78.24 1.2zm.12-3.42C15.3 8.34 8.82 8.1 5.16 9.24c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.28-1.02 15.72 1.62.54.3.72 1.02.42 1.56-.3.42-1.02.6-1.56.24z"
+          />
+        </svg>
+
+        <span class="link-text">Spotify</span>
+        <span class="external">↗</span>
+      </a>
+
+
+      <!-- YouTube Music -->
+      <a
+        class="music-link"
+        href="https://music.youtube.com/playlist?list=PLTJ1PnzCWyFw"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open YouTube Music"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19zm0 17.2a7.7 7.7 0 1 1 0-15.4 7.7 7.7 0 0 1 0 15.4zm-2.7-11v6.6l5.8-3.3-5.8-3.3z"
+          />
+        </svg>
+
+        <span class="link-text">YT Music</span>
+        <span class="external">↗</span>
+      </a>
+
+    </div>
+
+
+    <!-- CENTER LOGO -->
+    <div class="logo-container">
+      <img
+        src="./assets/logo.png"
+        alt="Logo"
+      />
+    </div>
+
+
+    <!-- MUSIC PLAYER -->
+    <section class="music-player">
+
+      <!-- COVER -->
+      <div class="album-wrapper">
+
+        <img
+          id="album"
+          class="album"
+          src="./assets/covers/01.jpg"
+          alt="Current song cover"
+        />
+
+        <div class="album-hole"></div>
+
+      </div>
+
+
+      <!-- SONG DETAILS -->
+      <div class="song-info">
+
+        <div
+          class="song-title"
+          id="songTitle"
+        >
+          Loading song...
+        </div>
+
+        <div
+          class="song-artist"
+          id="songArtist"
+        >
+          Loading artist...
+        </div>
+
+
+        <!-- PROGRESS BAR -->
+        <div
+          class="progress-container"
+          id="progressContainer"
+          role="slider"
+          aria-label="Song progress"
+          tabindex="0"
+        >
+
+          <div class="progress-bar">
+            <div
+              class="progress"
+              id="progress"
+            ></div>
+
+            <div
+              class="progress-thumb"
+              id="progressThumb"
+            ></div>
+          </div>
+
+        </div>
+
+
+        <!-- TIME -->
+        <div class="time-info">
+          <span id="currentSongTime">0:00</span>
+          <span id="duration">0:00</span>
+        </div>
+
+      </div>
+
+
+      <!-- CONTROLS -->
+      <div class="controls">
+
+        <!-- PREVIOUS -->
+        <button
+          class="control-btn"
+          id="prevBtn"
+          type="button"
+          aria-label="Previous song"
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+          </svg>
+        </button>
+
+
+        <!-- PLAY / PAUSE -->
+        <button
+          class="control-btn play-btn"
+          id="playBtn"
+          type="button"
+          aria-label="Play song"
+        >
+          <svg
+            id="playIcon"
+            viewBox="0 0 24 24"
+          >
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+
+
+        <!-- NEXT -->
+        <button
+          class="control-btn"
+          id="nextBtn"
+          type="button"
+          aria-label="Next song"
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M16 6h2v12h-2zm-2 6L5.5 6v12z"/>
+          </svg>
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- AUDIO -->
+    <audio id="audio"></audio>
+
+  </main>
+
+  <!-- IMPORTANT: JS AT THE END -->
+  <script src="script.js"></script>
+
+</body>
+</html>

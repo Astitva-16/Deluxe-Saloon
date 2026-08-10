@@ -1,0 +1,677 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background: #111;
+}
+
+
+/* ================= MAIN ================= */
+
+.app {
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+  min-height: 650px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.04) 0%,
+      rgba(0, 0, 0, 0.08) 55%,
+      rgba(0, 0, 0, 0.48) 100%
+    ),
+    url("./assets/bg.jpg");
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+/* ================= TOP LEFT ================= */
+
+.top-left {
+  position: fixed;
+
+  top: 19px;
+  left: 19px;
+
+  z-index: 100;
+
+  display: block;
+
+  color: #ffffff;
+
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0);
+}
+
+
+/* ================= TOP CENTER ================= */
+
+.top-center {
+  position: fixed;
+
+  top: 21px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  color: #ffffff;
+
+  font-family : system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0);
+}
+
+.online-dot {
+  width: 9px;
+  height: 9px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #16d98c;
+
+  box-shadow:
+    0 0 12px #16d98c;
+}
+
+.online-text {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
+/* ================= TOP RIGHT ================= */
+
+.top-right {
+  position: fixed;
+
+  top: 25px;
+  right: 25px;
+
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.music-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: white;
+  text-decoration: none;
+
+  font-family : system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.25);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.music-link:hover {
+  opacity: 0.75;
+  transform: translateY(-2px);
+}
+
+.music-link svg {
+  width: 22px;
+  height: 22px;
+
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
+.external {
+  opacity: 0.6;
+}
+
+
+/* ================= LOGO ================= */
+
+.logo-container {
+  position: absolute;
+
+  top: 14vh;
+  left: 51%;
+
+  transform: translateX(-50%);
+
+  width: "30px";
+  height: "27px";
+
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+
+  z-index: 10;
+}
+
+.logo-container img {
+  display: block;
+
+  width: 95%;
+  height: auto;
+
+  max-height: 43vh;
+
+  object-fit: contain;
+
+  pointer-events: none;
+  user-select: none;
+
+  filter:
+    drop-shadow(
+      0 4px 20px rgba(0, 0, 0, 0)
+    );
+}
+
+
+/* ================= PLAYER ================= */
+
+.music-player {
+  position: fixed;
+
+  left: 50%;
+  bottom: 8vh;
+
+  transform: translateX(-50%);
+
+  width: min(570px, calc(100vw - 40px));
+  min-height: 100px;
+
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  padding: 10px 15px 10px 10px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.10);
+
+  backdrop-filter:
+    blur(24px) saturate(150%);
+
+  -webkit-backdrop-filter:
+    blur(24px) saturate(150%);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.22);
+
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+
+/* ================= ALBUM ================= */
+
+.album-wrapper {
+  position: relative;
+
+  width: 76px;
+  height: 76px;
+
+  flex-shrink: 0;
+}
+
+.album {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  border:
+    2px solid rgba(255, 255, 255, 0.22);
+
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.35);
+
+  animation: spin 8s linear infinite;
+  animation-play-state: paused;
+}
+
+.album.playing {
+  animation-play-state: running;
+}
+
+.album-hole {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 14px;
+  height: 14px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    rgba(0, 0, 0, 0.75);
+
+  border:
+    2px solid rgba(255, 255, 255, 0.45);
+
+  pointer-events: none;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ================= SONG INFO ================= */
+
+.song-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.song-title {
+  color: white;
+
+  font-family:
+    system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  margin-bottom: 2px;
+
+  text-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.song-artist {
+  color:
+    rgba(255, 255, 255, 0.72);
+
+  font-size: 12px;
+  font-weight: 500;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  margin-bottom: 9px;
+}
+
+
+/* ================= PROGRESS ================= */
+
+.progress-container {
+  width: 100%;
+
+  cursor: pointer;
+
+  touch-action: none;
+}
+
+.progress-bar {
+  position: relative;
+
+  width: 100%;
+  height: 4px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.22);
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    rgba(255, 255, 255, 0.92);
+}
+
+.progress-thumb {
+  position: absolute;
+
+  top: 50%;
+  left: 0%;
+
+  width: 10px;
+  height: 10px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: white;
+
+  opacity: 0;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.35);
+
+  transition:
+    opacity 0.2s ease;
+}
+
+.progress-container:hover .progress-thumb,
+.progress-container.dragging .progress-thumb {
+  opacity: 1;
+}
+
+
+/* ================= TIME INFO ================= */
+
+.time-info {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 6px;
+
+  color:
+    rgba(255, 255, 255, 0.68);
+
+  font-size: 11px;
+  font-weight: 500;
+
+  font-variant-numeric:
+    tabular-nums;
+}
+
+
+/* ================= CONTROLS ================= */
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  flex-shrink: 0;
+}
+
+.control-btn {
+  width: 34px;
+  height: 34px;
+
+  border: none;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background: transparent;
+
+  color:
+    rgba(255, 255, 255, 0.85);
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.control-btn:hover {
+  background:
+    rgba(255, 255, 255, 0.15);
+
+  color: white;
+}
+
+.control-btn:active {
+  transform: scale(0.92);
+}
+
+.control-btn svg {
+  width: 18px;
+  height: 18px;
+
+  fill: currentColor;
+}
+
+
+/* MAIN PLAY BUTTON */
+
+.play-btn {
+  width: 46px;
+  height: 46px;
+
+  background: white;
+  color: #111;
+
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.28);
+}
+
+.play-btn:hover {
+  background: white;
+  color: #111;
+
+  transform: scale(1.06);
+}
+
+.play-btn svg {
+  width: 19px;
+  height: 19px;
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 900px) {
+
+  .logo-container {
+    width: min(60vw, 540px);
+  }
+
+  .music-player {
+    width: min(540px, calc(100vw - 40px));
+  }
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+  .app {
+    min-height: 100svh;
+    background-position: center center;
+  }
+
+  .top-left {
+    top: 18px;
+    left: 18px;
+
+    font-size: 18px;
+  }
+
+  .top-center {
+    top: 20px;
+
+    font-size: 12px;
+  }
+
+  .online-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .top-right {
+    top: 16px;
+    right: 16px;
+
+    gap: 10px;
+  }
+
+  .link-text,
+  .external {
+    display: none;
+  }
+
+  .music-link svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .logo-container {
+    top: 15vh;
+
+    width: 72vw;
+    max-width: 400px;
+  }
+
+  .music-player {
+    bottom: 28px;
+
+    width:
+      calc(100vw - 24px);
+
+    min-height: 82px;
+
+    padding: 8px 10px 8px 8px;
+
+    gap: 9px;
+
+    border-radius: 28px;
+  }
+
+  .album-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .album-hole {
+    width: 11px;
+    height: 11px;
+  }
+
+  .song-title {
+    font-size: 16px;
+  }
+
+  .song-artist {
+    font-size: 11px;
+
+    margin-bottom: 6px;
+  }
+
+  .progress-bar {
+    height: 3px;
+  }
+
+  .progress-thumb {
+    display: none;
+  }
+
+  .time-info {
+    font-size: 10px;
+    margin-top: 5px;
+  }
+
+  .controls {
+    gap: 1px;
+  }
+
+  .control-btn {
+    width: 27px;
+    height: 27px;
+  }
+
+  .control-btn svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .play-btn {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 430px) {
+
+  .top-center {
+    display: none;
+  }
+
+  .logo-container {
+    top: 14vh;
+    width: 78vw;
+  }
+
+  .album-wrapper {
+    width: 54px;
+    height: 54px;
+  }
+
+  .music-player {
+    bottom: 20px;
+  }
+}
