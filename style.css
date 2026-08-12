@@ -168,7 +168,7 @@ body {
 }
 
 
-/* ================= LOGO ================= */
+/* ================= LOGO =================
 
 .logo-container {
   position: absolute;
@@ -181,7 +181,7 @@ body {
   width: "30px";
   height: "27px";
 
-  /* display: flex; */
+  /* display: flex; 
   align-items: center;
   justify-content: center;
 
@@ -205,7 +205,7 @@ body {
     drop-shadow(
       0 4px 20px rgba(0, 0, 0, 0)
     );
-}
+} */
 
 
 /* ================= PLAYER ================= */
@@ -523,9 +523,9 @@ body {
 
 @media (max-width: 900px) {
 
-  .logo-container {
+  /* .logo-container {
     width: min(60vw, 540px);
-  }
+  } */
 
   .music-player {
     width: min(540px, calc(100vw - 40px));
@@ -577,12 +577,12 @@ body {
     height: 22px;
   }
 
-  .logo-container {
+  /* .logo-container {
     top: 15vh;
 
     width: 72vw;
     max-width: 400px;
-  }
+  } */
 
   .music-player {
     bottom: 28px;
@@ -661,10 +661,10 @@ body {
     display: none;
   }
 
-  .logo-container {
+  /* .logo-container {
     top: 14vh;
     width: 78vw;
-  }
+  } */
 
   .album-wrapper {
     width: 54px;
